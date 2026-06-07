@@ -19,14 +19,14 @@ body {
 
 h1 {
   text-align: center;
-  color: #1a237e;
+  color: #000000;
   font-size: 2rem;
   margin-bottom: 10px;
 }
 
 p {
   text-align: center;
-  color: #666;
+  color: #000000;
   margin-bottom: 20px;
 }
 
@@ -34,7 +34,6 @@ p {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
-}
 
 .card {
   background: white;
@@ -47,6 +46,8 @@ p {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   font-size: 1.1rem;
   transition: transform 0.2s;
+color: #000000;
+font-weight: 700;
 }
 
 .card:hover {
@@ -68,6 +69,7 @@ button {
 h2 {
   color: #000000;
   margin-bottom: 20px;
+}
 }
 
 .content {
