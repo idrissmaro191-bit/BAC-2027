@@ -16,6 +16,13 @@ const subjects = [
   { id: 6, name: 'التاريخ والجغرافيا', icon: '🗺️' },
 ]
 
+const nationals = [
+  { id: 7, name: 'اللغة العربية', icon: '📖' },
+  { id: 8, name: 'الفلسفة', icon: '🧠' },
+  { id: 9, name: 'اللغة الإنجليزية', icon: '🇬🇧' },
+  { id: 10, name: 'الاجتماعيات', icon: '🗺️' },
+]
+
 function App() {
   const [selected, setSelected] = useState(null)
   const [lessons, setLessons] = useState([])
@@ -38,7 +45,7 @@ function App() {
   if (selected) return (
     <div className="app">
       <button onClick={() => setSelected(null)}>← رجوع</button>
-      <h2>{subjects.find(s => s.id === selected)?.name}</h2>
+      <h2>{[...subjects, ...nationals].find(s => s.id === selected)?.name}</h2>
       {lessons.length === 0 ? <p>لا توجد دروس بعد</p> : lessons.map(l => (
         <div key={l.id} className="card" onClick={() => setLesson(l)}>{l.title}</div>
       ))}
@@ -51,6 +58,17 @@ function App() {
       <p>اختر المادة</p>
       <div className="grid">
         {subjects.map(s => (
+          <div key={s.id} className="card" onClick={() => setSelected(s.id)}>
+            <span>{s.icon}</span>
+            <span>{s.name}</span>
+          </div>
+        ))}
+      </div>
+
+      <h1 style={{marginTop: '40px'}}>📝 وطنيات الباكالوريا</h1>
+      <p>اختر المادة</p>
+      <div className="grid">
+        {nationals.map(s => (
           <div key={s.id} className="card" onClick={() => setSelected(s.id)}>
             <span>{s.icon}</span>
             <span>{s.name}</span>
