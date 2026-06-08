@@ -1,4 +1,4 @@
-* {
+* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -53,6 +53,7 @@ body.dark {
   align-items: center;
   margin-bottom: 20px;
   width: 100%;
+  gap: 20px;
 }
 
 .theme-btn {
