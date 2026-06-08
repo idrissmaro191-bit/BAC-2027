@@ -6,22 +6,26 @@
 }
 
 body {
-  background: #f0f4f8;
-  min-height: 100vh;
-}
-
-.app {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  direction: rtl;
   min-height: 100vh;
   background: #f0f4f8;
   transition: all 0.3s;
 }
 
-.app.dark {
+body.dark {
   background: #121212;
+}
+
+.app {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 20px;
+  direction: rtl;
+  min-height: 100vh;
+  background: transparent;
+  transition: all 0.3s;
+}
+
+.app.dark {
   color: white;
 }
 
@@ -48,6 +52,7 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  width: 100%;
 }
 
 .theme-btn {

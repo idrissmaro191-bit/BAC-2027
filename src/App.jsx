@@ -48,6 +48,10 @@ function App() {
   }, [])
 
   useEffect(() => {
+    document.body.classList.toggle('dark', darkMode)
+  }, [darkMode])
+
+  useEffect(() => {
     if (selected) {
       supabase.from('lessons').select('*').eq('subject_id', selected).then(({ data }) => setLessons(data || []))
     }
