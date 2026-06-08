@@ -23,16 +23,32 @@ const nationals = [
   { id: 10, name: 'الاجتماعيات', icon: '🗺️' },
 ]
 
+function SplashScreen() {
+  return (
+    <div className="splash">
+      <div className="splash-title">ملخصات 2Bac</div>
+    </div>
+  )
+}
+
 function App() {
+  const [splash, setSplash] = useState(true)
   const [selected, setSelected] = useState(null)
   const [lessons, setLessons] = useState([])
   const [lesson, setLesson] = useState(null)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setSplash(false), 2500)
+    return () => clearTimeout(timer)
+  }, [])
 
   useEffect(() => {
     if (selected) {
       supabase.from('lessons').select('*').eq('subject_id', selected).then(({ data }) => setLessons(data || []))
     }
   }, [selected])
+
+  if (splash) return <SplashScreen />
 
   if (lesson) return (
     <div className="app">
@@ -54,7 +70,7 @@ function App() {
 
   return (
     <div className="app">
-      <h1>📚 ملخصات الباكالوريا</h1>
+      <h1 className="section-title">📚 ملخصات الباكالوريا</h1>
       <p>اختر المادة</p>
       <div className="grid">
         {subjects.map(s => (
@@ -64,8 +80,7 @@ function App() {
           </div>
         ))}
       </div>
-
-      <h1 style={{marginTop: '40px'}}>📝 وطنيات الباكالوريا</h1>
+      <h1 className="section-title" style={{marginTop: '40px'}}>📝 وطنيات الباكالوريا</h1>
       <p>اختر المادة</p>
       <div className="grid">
         {nationals.map(s => (
