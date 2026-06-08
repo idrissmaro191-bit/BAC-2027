@@ -34,6 +34,7 @@ body {
   padding: 20px 40px;
   border: 4px solid #FFD700;
   border-radius: 20px;
+  line-height: 2;
 }
 
 @keyframes fadeIn {
