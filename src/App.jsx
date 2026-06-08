@@ -40,6 +40,7 @@ function App() {
   const [selected, setSelected] = useState(null)
   const [lessons, setLessons] = useState([])
   const [lesson, setLesson] = useState(null)
+  const [darkMode, setDarkMode] = useState(false)
 
   useEffect(() => {
     const timer = setTimeout(() => setSplash(false), 2500)
@@ -55,16 +56,22 @@ function App() {
   if (splash) return <SplashScreen />
 
   if (lesson) return (
-    <div className="app">
-      <button onClick={() => setLesson(null)}>← رجوع</button>
+    <div className={`app ${darkMode ? 'dark' : ''}`}>
+      <div className="topbar">
+        <button onClick={() => setLesson(null)}>← رجوع</button>
+        <button className="theme-btn" onClick={() => setDarkMode(!darkMode)}>{darkMode ? '☀️' : '🌙'}</button>
+      </div>
       <h2>{lesson.title}</h2>
       <div className="content">{lesson.content}</div>
     </div>
   )
 
   if (selected) return (
-    <div className="app">
-      <button onClick={() => setSelected(null)}>← رجوع</button>
+    <div className={`app ${darkMode ? 'dark' : ''}`}>
+      <div className="topbar">
+        <button onClick={() => setSelected(null)}>← رجوع</button>
+        <button className="theme-btn" onClick={() => setDarkMode(!darkMode)}>{darkMode ? '☀️' : '🌙'}</button>
+      </div>
       <h2>{[...subjects, ...nationals].find(s => s.id === selected)?.name}</h2>
       {lessons.length === 0 ? <p>لا توجد دروس بعد</p> : lessons.map(l => (
         <div key={l.id} className="card" onClick={() => setLesson(l)}>{l.title}</div>
@@ -73,7 +80,10 @@ function App() {
   )
 
   return (
-    <div className="app">
+    <div className={`app ${darkMode ? 'dark' : ''}`}>
+      <div className="topbar">
+        <button className="theme-btn" onClick={() => setDarkMode(!darkMode)}>{darkMode ? '☀️' : '🌙'}</button>
+      </div>
       <h1 className="section-title">📚 ملخصات الباكالوريا</h1>
       <p>اختر المادة</p>
       <div className="grid">
