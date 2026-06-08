@@ -26,7 +26,11 @@ const nationals = [
 function SplashScreen() {
   return (
     <div className="splash">
-      <div className="splash-title">ملخصات 2Bac</div>
+      <div className="splash-title">
+        ملخصات
+        <br/>
+        2Bac
+      </div>
     </div>
   )
 }
