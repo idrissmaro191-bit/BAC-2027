@@ -1,4 +1,4 @@
-* * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -106,6 +106,17 @@ body.dark {
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   color: #000000;
   font-weight: 900;
+}
+
+.section-header {
+  color: #1a237e;
+  margin: 20px 0 10px;
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.app.dark .section-header {
+  color: #FFD700;
 }
 
 h1 {
