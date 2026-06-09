@@ -108,15 +108,35 @@ body.dark {
   font-weight: 900;
 }
 
-.section-header {
-  color: #1a237e;
+.module-header {
+  background: #FFD700;
+  border-radius: 10px;
+  padding: 10px 15px;
   margin: 20px 0 10px;
-  font-size: 1rem;
   font-weight: 900;
+  font-size: 1rem;
+  color: #000000;
+  text-align: center;
+}
+
+.section-header {
+  background: #2e7d32;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin: 10px 0 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: white;
+}
+
+.app.dark .module-header {
+  background: #FFD700;
+  color: #000000;
 }
 
 .app.dark .section-header {
-  color: #FFD700;
+  background: #1b5e20;
+  color: white;
 }
 
 h1 {
