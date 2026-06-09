@@ -22,6 +22,10 @@ const nationals = [
   { id: 9, name: 'اللغة الإنجليزية', icon: '🇬🇧' },
   { id: 10, name: 'الاجتماعيات', icon: '🗺️' },
 ]
+const methodologies = [
+  { id: 11, name: 'اللغة العربية', icon: '📖' },
+  { id: 12, name: 'الفلسفة', icon: '🧠' },
+]
 
 const lessonsBySubject = {
   1: [
@@ -431,6 +435,16 @@ function App() {
       <p>اختر المادة</p>
       <div className="grid">
         {nationals.map(s => (
+          <div key={s.id} className="card" onClick={() => setSelected(s.id)}>
+            <span>{s.icon}</span>
+            <span>{s.name}</span>
+          </div>
+        ))}
+      </div>
+      <h1 className="section-title" style={{marginTop: '40px'}}>📝 منهجيات الباكالوريا</h1>
+      <p>اختر المادة</p>
+      <div className="grid">
+        {methodologies.map(s => (
           <div key={s.id} className="card" onClick={() => setSelected(s.id)}>
             <span>{s.icon}</span>
             <span>{s.name}</span>
