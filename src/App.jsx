@@ -457,6 +457,15 @@ const daysLeft = Math.ceil((examDate - today) / (1000 * 60 * 60 * 24))
           </div>
         ))}
       </div>
+      <div className="countdown-container">
+  <p className="countdown-title">موعد الامتحان الوطني الموحد للثانية باكالوريا</p>
+  <div className="countdown-circle">
+    <span className="countdown-days">{timeLeft.days}</span>
+    <span className="countdown-label">يوم</span>
+    <span className="countdown-time">{String(timeLeft.hours).padStart(2,'0')}:{String(timeLeft.minutes).padStart(2,'0')}:{String(timeLeft.seconds).padStart(2,'0')}</span>
+  </div>
+</div>
+
       <h1 className="section-title" style={{marginTop: '40px'}}>📝 منهجيات الباكالوريا</h1>
       <p>اختر المادة</p>
       <div className="grid">
