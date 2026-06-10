@@ -471,6 +471,7 @@ const daysLeft = Math.ceil((examDate - today) / (1000 * 60 * 60 * 24))
           </div>
         ))}
       </div>
+      <CountdownTimer />
     </div>
   )
 }
