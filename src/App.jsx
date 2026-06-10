@@ -365,7 +365,7 @@ function SplashScreen() {
         <br/>
         2Bac
       </div>
-      <CountdownTimer />
+      
     </div>
   )
 }
