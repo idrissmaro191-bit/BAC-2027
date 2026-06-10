@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { createClient } from '@supabase/supabase-js'
 import './App.css'
+import CountdownTimer from "./components/CountdownTimer";
 
 const supabase = createClient(
   import.meta.env.VITE_SUPABASE_URL,
@@ -364,6 +365,7 @@ function SplashScreen() {
         <br/>
         2Bac
       </div>
+      <CountdownTimer />
     </div>
   )
 }
