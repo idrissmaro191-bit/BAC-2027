@@ -435,13 +435,8 @@ const daysLeft = Math.ceil((examDate - today) / (1000 * 60 * 60 * 24))
       <div className="topbar">
         <button className="theme-btn" onClick={() => setDarkMode(!darkMode)}>{darkMode ? '☀️' : '🌙'}</button>
       </div>
-      <div className="countdown-container">
-        <p className="countdown-title">موعد الامتحان الوطني الموحد للثانية باكالوريا</p>
-        <div className="countdown-circle">
-          <span className="countdown-days">{daysLeft}</span>
-          <span className="countdown-label">يوم</span>
-        </div>
-      </div>
+    
+  
       <h1 className="section-title">📚 ملخصات الباكالوريا</h1>
       <p>اختر المادة</p>
       <div className="grid">
