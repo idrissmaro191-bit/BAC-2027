@@ -404,7 +404,11 @@ const daysLeft = Math.ceil((examDate - today) / (1000 * 60 * 60 * 24))
         <button className="theme-btn" onClick={() => setDarkMode(!darkMode)}>{darkMode ? '☀️' : '🌙'}</button>
       </div>
       <h2>{lesson.title}</h2>
-      
+      {lesson.pdf_url && (
+  <a href={lesson.pdf_url} target="_blank" rel="noreferrer" className="pdf-btn">
+    📄 فتح PDF
+  </a>
+)}
     </div>
   )
 
