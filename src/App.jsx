@@ -389,6 +389,11 @@ const daysLeft = Math.ceil((examDate - today) / (1000 * 60 * 60 * 24))
   useEffect(() => {
     document.body.classList.toggle('dark', darkMode)
   }, [darkMode])
+  useEffect(() => {
+  if (!lesson || lesson.pdf_url) return;
+  supabase.from('lessons').select('pdf_url').eq('id', lesson.id).single()
+    .then(({ data }) => { if (data?.pdf_url) setLesson(l => ({...l, ...data})); });
+}, [lesson?.id]);
 
   if (splash) return <SplashScreen />
 
@@ -399,7 +404,7 @@ const daysLeft = Math.ceil((examDate - today) / (1000 * 60 * 60 * 24))
         <button className="theme-btn" onClick={() => setDarkMode(!darkMode)}>{darkMode ? '☀️' : '🌙'}</button>
       </div>
       <h2>{lesson.title}</h2>
-      <div className="content">PDF قريباً</div>
+      
     </div>
   )
 
