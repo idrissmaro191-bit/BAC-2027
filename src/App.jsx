@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { createClient } from '@supabase/supabase-js'
 import './App.css'
 import CountdownTimer from "./components/CountdownTimer";
+import Navbar from "./components/Navbar";
 
 const supabase = createClient(
   import.meta.env.VITE_SUPABASE_URL,
@@ -406,6 +407,7 @@ const daysLeft = Math.ceil((examDate - today) / (1000 * 60 * 60 * 24))
     const modules = [...new Set(lessons.map(l => l.module))]
     return (
       <div className={`app ${darkMode ? 'dark' : ''}`}>
+        <Navbar onSearch={() => {}} />
         <div className="topbar">
           <button onClick={() => setSelected(null)}>← رجوع</button>
           <button className="theme-btn" onClick={() => setDarkMode(!darkMode)}>{darkMode ? '☀️' : '🌙'}</button>
