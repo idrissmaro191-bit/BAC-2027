@@ -1,20 +1,30 @@
 import { useState } from "react";
+import Leaderboard from "./Leaderboard";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
 
   return (
-    <nav className="navbar">
-      <div className="navbar-menu-wrapper">
+    <>
+      <nav className="navbar">
         <button className="navbar-menu-btn" onClick={() => setOpen(!open)}>☰</button>
-        {open && (
-          <div className="navbar-dropdown">
-            <a href="mailto:idrissmarzoug170@gmail.com">📧 idrissmarzoug170@gmail.com</a>
-            <a href="https://wa.me/212602034179" target="_blank" rel="noreferrer">💬 واتساب: 0602034179</a>
+        <span className="navbar-title">ملخصات 2Bac</span>
+      </nav>
+
+      {open && (
+        <div className="sidebar-overlay" onClick={() => setOpen(false)}>
+          <div className="sidebar" onClick={(e) => e.stopPropagation()}>
+            <button className="sidebar-close" onClick={() => setOpen(false)}>✕</button>
+            <h3 className="sidebar-title">القائمة</h3>
+            <a className="sidebar-item" href="mailto:idrissmarzoug170@gmail.com">📧 البريد الإلكتروني</a>
+            <a className="sidebar-item" href="https://wa.me/212602034179" target="_blank" rel="noreferrer">💬 واتساب</a>
+            <button className="sidebar-item" onClick={() => { setShowLeaderboard(true); setOpen(false); }}>🏆 لوحة المتصدرين</button>
           </div>
-        )}
-      </div>
-      <span className="navbar-title">ملخصات 2Bac</span>
-    </nav>
+        </div>
+      )}
+
+      {showLeaderboard && <Leaderboard onClose={() => setShowLeaderboard(false)} />}
+    </>
   );
 }
