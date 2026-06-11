@@ -407,7 +407,7 @@ const daysLeft = Math.ceil((examDate - today) / (1000 * 60 * 60 * 24))
     const modules = [...new Set(lessons.map(l => l.module))]
     return (
       <div className={`app ${darkMode ? 'dark' : ''}`}>
-        <Navbar onSearch={() => {}} />
+        
         <div className="topbar">
           <button onClick={() => setSelected(null)}>← رجوع</button>
           <button className="theme-btn" onClick={() => setDarkMode(!darkMode)}>{darkMode ? '☀️' : '🌙'}</button>
@@ -437,6 +437,7 @@ const daysLeft = Math.ceil((examDate - today) / (1000 * 60 * 60 * 24))
   return (
     <div className={`app ${darkMode ? 'dark' : ''}`}>
       <div className="topbar">
+        <Navbar />
         <button className="theme-btn" onClick={() => setDarkMode(!darkMode)}>{darkMode ? '☀️' : '🌙'}</button>
       </div>
     
