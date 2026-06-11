@@ -314,26 +314,39 @@ h2 {
   top: 0;
   z-index: 100;
 }
-
-.navbar-menu {
-  font-size: 1.5rem;
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-}
-
 .navbar-title {
   font-size: 1.1rem;
   font-weight: bold;
   color: white;
   font-family: cursive;
+  flex: 1;
+  text-align: center;
 }
-
-.navbar-search {
-  padding: 6px 10px;
-  border-radius: 20px;
+.navbar-menu-btn {
+  font-size: 1.5rem;
+  color: white;
+  background: none;
   border: none;
-  outline: none;
-  font-size: 0.85rem;
-  width: 120px;
+  cursor: pointer;
+}
+.navbar-dropdown {
+  position: absolute;
+  top: 55px;
+  left: 10px;
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 200;
+}
+.navbar-dropdown a {
+  color: #1a237e;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.navbar-menu-wrapper {
+  position: relative;
 }
