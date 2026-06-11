@@ -3,6 +3,7 @@ import { createClient } from '@supabase/supabase-js'
 import './App.css'
 import CountdownTimer from "./components/CountdownTimer";
 import Navbar from "./components/Navbar";
+import WelcomeMessage from "./components/WelcomeMessage";
 
 const supabase = createClient(
   import.meta.env.VITE_SUPABASE_URL,
@@ -436,6 +437,7 @@ const daysLeft = Math.ceil((examDate - today) / (1000 * 60 * 60 * 24))
 
   return (
     <div className={`app ${darkMode ? 'dark' : ''}`}>
+      <WelcomeMessage />
       <div className="topbar">
         <Navbar />
         <button className="theme-btn" onClick={() => setDarkMode(!darkMode)}>{darkMode ? '☀️' : '🌙'}</button>
