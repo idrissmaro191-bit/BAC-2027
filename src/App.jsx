@@ -391,7 +391,7 @@ const daysLeft = Math.ceil((examDate - today) / (1000 * 60 * 60 * 24))
   }, [darkMode])
   useEffect(() => {
   if (!lesson) return;
-supabase.from('lessons').select('pdf_url').ilike('title', lesson.title.trim()).maybeSingle()
+supabase.from('lessons').select('pdf_url').eq('title', lesson.title.trim()).maybeSingle()
     .then(({ data }) => { if (data?.pdf_url) setLesson(l => ({...l, ...data})); });
 }, [lesson?.id]);
 
