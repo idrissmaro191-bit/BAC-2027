@@ -371,7 +371,6 @@ function SplashScreen() {
 }
 
 function App() {
-  const [splash, setSplash] = useState(() => !localStorage.getItem('splashShown'))
   const [selected, setSelected] = useState(null)
   const [splash, setSplash] = useState(true)
   const [darkMode, setDarkMode] = useState(false)
