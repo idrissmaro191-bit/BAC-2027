@@ -362,12 +362,20 @@ const lessonsBySubject = {
 function SplashScreen() {
   return (
     <div className="splash">
-      <div className="splash-title">
-        ملخصات
-        <br/>
-        2Bac
+      <div className="splash-card">
+        <div className="splash-flowers">🌸🌺🌸</div>
+        <div className="splash-title">
+          أيها الطالب المجتهد! 🌟
+        </div>
+        <p className="splash-text">
+          الباكالوريا ليست نهاية الطريق، بل بداية مستقبل مشرق.
+          <br/>
+          كل درس تقرأه اليوم هو خطوة نحو حلمك.
+          <br/>
+          لا تستسلم، فالنجاح يحب المثابرين! 💪
+        </p>
+        <div className="splash-flowers">🌺🌸🌺</div>
       </div>
-      
     </div>
   )
 }
