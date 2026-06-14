@@ -405,7 +405,7 @@ supabase.from('lessons').select('pdf_url').eq('title', lesson.title.trim()).mayb
       </div>
       <h2>{lesson.title}</h2>
       {lesson.pdf_url && (
-  <a href={lesson.pdf_url} target="_blank" rel="noreferrer" className="pdf-btn" style={{display:'flex', justifyContent:'center', alignItems:'center', fontWeight:'900', fontSize:'1.4rem', color:'#000', textDecoration:'none', gap:'8px', marginTop:'30px'}}>
+  <a href={lesson.pdf_url} target="_blank" rel="noreferrer" className="pdf-btn">
   📄 فتح PDF
 </a>
 )}
