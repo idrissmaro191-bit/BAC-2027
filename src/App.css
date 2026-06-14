@@ -524,13 +524,15 @@ h2 {
   background: #e8eaf6;
 }
 .pdf-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 900;
-  font-size: 1.4rem;
+  display: block;
+  width: fit-content;
+  margin: 40px auto;
+  padding: 14px 32px;
+  background-color: #16a34a;
   color: #000000;
+  font-weight: 900;
+  font-size: 1.3rem;
   text-decoration: none;
-  gap: 8px;
-  margin-top: 30px;
+  border-radius: 12px;
+  text-align: center;
 }
