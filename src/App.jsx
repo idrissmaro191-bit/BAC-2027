@@ -380,7 +380,7 @@ const today = new Date()
 const daysLeft = Math.ceil((examDate - today) / (1000 * 60 * 60 * 24))
 
   useEffect(() => {
-    const timer = setTimeout(() => setSplash(false), 2500)
+    const timer = setTimeout(() => { setSplash(false); localStorage.removeItem('splashShown') }, 2500)
     return () => clearTimeout(timer)
   }, [])
 
