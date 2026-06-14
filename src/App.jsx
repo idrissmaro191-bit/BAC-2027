@@ -371,8 +371,8 @@ function SplashScreen() {
 }
 
 function App() {
-  const [selected, setSelected] = useState(null)
   const [splash, setSplash] = useState(true)
+const [selected, setSelected] = useState(null)
   const [darkMode, setDarkMode] = useState(false)
   const examDate = new Date('2027-06-04')
 const today = new Date()
