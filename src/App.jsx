@@ -373,14 +373,14 @@ function SplashScreen() {
 function App() {
   const [splash, setSplash] = useState(() => !localStorage.getItem('splashShown'))
   const [selected, setSelected] = useState(null)
-  const [lesson, setLesson] = useState(null)
+  const [splash, setSplash] = useState(true)
   const [darkMode, setDarkMode] = useState(false)
   const examDate = new Date('2027-06-04')
 const today = new Date()
 const daysLeft = Math.ceil((examDate - today) / (1000 * 60 * 60 * 24))
 
   useEffect(() => {
-    const timer = setTimeout(() => { setSplash(false); localStorage.setItem('splashShown', 'true') }, 2500)
+    const timer = setTimeout(() => setSplash(false), 2500)
     return () => clearTimeout(timer)
   }, [])
 
