@@ -372,6 +372,7 @@ function SplashScreen() {
 
 function App() {
   const [splash, setSplash] = useState(true)
+  const [showMotivation, setShowMotivation] = useState(() => !sessionStorage.getItem('motivationShown'))
 const [selected, setSelected] = useState(null)
 const [lesson, setLesson] = useState(null)
   const [darkMode, setDarkMode] = useState(false)
@@ -450,7 +451,21 @@ supabase.from('lessons').select('pdf_url').eq('title', lesson.title.trim()).mayb
         <button className="theme-btn" onClick={() => setDarkMode(!darkMode)}>{darkMode ? '☀️' : '🌙'}</button>
       </div>
     
-  
+  {showMotivation && (
+  <div className="motivation-overlay">
+    <div className="motivation-card">
+      <div className="motivation-flowers">🌸🌺🌸</div>
+      <div className="motivation-title">🌟 أيها الطالب المجتهد!</div>
+      <p className="motivation-text">
+        الباكالوريا ليست نهاية الطريق، بل بداية مستقبل مشرق.<br/>
+        كل درس تقرأه اليوم هو خطوة نحو حلمك.<br/>
+        لا تستسلم، فالنجاح يحب المثابرين! 💪
+      </p>
+      <div className="motivation-flowers">🌺🌸🌺</div>
+      <button className="motivation-close" onClick={() => { setShowMotivation(false); sessionStorage.setItem('motivationShown', 'true') }}>✕</button>
+    </div>
+  </div>
+)}
       <h1 className="section-title">📚 ملخصات الباكالوريا</h1>
       <p>اختر المادة</p>
       <div className="grid">
