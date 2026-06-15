@@ -359,15 +359,7 @@ const lessonsBySubject = {
   ],
 }
 function SplashScreen() {
-  return (
-    <div className="splash">
-      <div className="splash-title">
-        ملخصات
-        <br/>
-        2Bac
-      </div>
-    </div>
-  )
+  return null
 }
 
 function App() {
