@@ -1,9 +1,11 @@
 import { useState } from "react";
 import Leaderboard from "./Leaderboard";
+import Chat from "./Chat";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [showLeaderboard, setShowLeaderboard] = useState(false);
+  const [showChat, setShowChat] = useState(false);
 
   return (
     <>
