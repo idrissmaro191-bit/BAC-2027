@@ -42,7 +42,6 @@ export default function Chat({ onClose }) {
     setUsername(nameInput.trim());
   };
 
-  // الستايلات المدمجة لضمان ظهور النافذة فوق كل شيء بوضوح
   const overlayStyle = {
     position: 'fixed',
     top: 0,
