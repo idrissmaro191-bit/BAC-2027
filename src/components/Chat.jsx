@@ -1,43 +1,76 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { supabase } from "../supabaseClient";
+
+const bannedWords = ['شتيمة1', 'شتيمة2'];
 
 export default function Chat({ onClose }) {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
+  const [username, setUsername] = useState(() => localStorage.getItem('chat_username') || '');
+  const [nameInput, setNameInput] = useState('');
+  const bottomRef = useRef(null);
 
   useEffect(() => {
-    // جلب الرسائل من Supabase
-    const fetchMessages = async () => {
-      const { data } = await supabase.from('messages').select('*').order('created_at', { ascending: true });
+    supabase.from('messages').select('*').order('created_at').then(({ data }) => {
       if (data) setMessages(data);
-    };
-    fetchMessages();
+    });
 
-    // الاستماع للرسائل الجديدة
-    const channel = supabase.channel('public:messages')
-      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages' }, (payload) => {
-        setMessages((prev) => [...prev, payload.new]);
-      })
-      .subscribe();
+    const channel = supabase.channel('messages').on('postgres_changes',
+      { event: 'INSERT', schema: 'public', table: 'messages' },
+      (payload) => setMessages(prev => [...prev, payload.new])
+    ).subscribe();
 
-    return () => { supabase.removeChannel(channel); };
+    return () => supabase.removeChannel(channel);
   }, []);
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
 
   const sendMessage = async () => {
     if (!input.trim()) return;
-    await supabase.from('messages').insert([{ username: 'User', message: input }]);
+    const hasBanned = bannedWords.some(w => input.includes(w));
+    if (hasBanned) { alert('⚠️ رسالتك تحتوي على كلمات غير لائقة!'); return; }
+    await supabase.from('messages').insert([{ username, message: input.trim() }]);
     setInput('');
   };
 
+  const saveName = () => {
+    if (!nameInput.trim()) return;
+    localStorage.setItem('chat_username', nameInput.trim());
+    setUsername(nameInput.trim());
+  };
+
+  if (!username) return (
+    <div className="chat-overlay">
+      <div className="chat-box">
+        <button className="chat-close" onClick={onClose}>✕</button>
+        <h3>📢 فضاء التواصل</h3>
+        <p>اكتب اسمك باش تدخل</p>
+        <input className="chat-input" placeholder="اسمك..." value={nameInput} onChange={e => setNameInput(e.target.value)} />
+        <button className="chat-send" onClick={saveName}>دخول ✓</button>
+      </div>
+    </div>
+  );
+
   return (
-    <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.7)', zIndex: 99999, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-      <div style={{ background: 'white', padding: '20px', borderRadius: '12px', width: '90%', maxWidth: '400px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-        <button onClick={onClose} style={{ alignSelf: 'flex-end', cursor: 'pointer' }}>Close</button>
-        <div style={{ height: '300px', overflowY: 'scroll', border: '1px solid #ccc', padding: '10px' }}>
-          {messages.map((m) => <div key={m.id}><strong>{m.username}:</strong> {m.message}</div>)}
+    <div className="chat-overlay">
+      <div className="chat-box">
+        <button className="chat-close" onClick={onClose}>✕</button>
+        <h3>📢 فضاء التواصل</h3>
+        <div className="chat-messages">
+          {messages.map(m => (
+            <div key={m.id} className={`chat-msg ${m.username === username ? 'mine' : 'theirs'}`}>
+              <span className="chat-user">{m.username}</span>
+              <span className="chat-text">{m.message}</span>
+            </div>
+          ))}
+          <div ref={bottomRef} />
         </div>
-        <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Type a message..." />
-        <button onClick={sendMessage}>Send</button>
+        <div className="chat-footer">
+          <input className="chat-input" placeholder="اكتب رسالة..." value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => e.key === 'Enter' && sendMessage()} />
+          <button className="chat-send" onClick={sendMessage}>إرسال</button>
+        </div>
       </div>
     </div>
   );
